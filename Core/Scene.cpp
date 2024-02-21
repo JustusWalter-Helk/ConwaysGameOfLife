@@ -1,30 +1,14 @@
 #include "Scene.h"
+#include "../Base.h"
 
-#include "SDL2/SDL.h"
-	
-	void Kyuubi::Scene::draw(SDL_Renderer* renderer) {
-		for (Rectangle rect : objects) {
-			SDL_SetRenderDrawColor(renderer, rect.color.r, rect.color.g, rect.color.b, rect.color.a);
+void Kyuubi::Scene::addObject(Object& object) {
+	objects.push_back(object);
+}
 
-			SDL_Rect sdlrect;
-			sdlrect.x = rect.PosX;
-			sdlrect.y = rect.PosY;
-			sdlrect.w = rect.SizeX;
-			sdlrect.h = rect.SizeY;
+void Kyuubi::Scene::addObject(std::vector<Object> newObjects) {
+	objects.insert(objects.end(), newObjects.begin(), newObjects.end());
+}
 
-			SDL_RenderFillRect(renderer, &sdlrect);
-		}
-		SDL_RenderPresent(renderer);
-	}
-
-	void Kyuubi::Scene::handleInput() {
-
-	}
-
-	void Kyuubi::Scene::addObject(Rectangle rect) {
-		objects.push_back(rect);
-	}
-
-	void Kyuubi::Scene::addObject(std::vector<Rectangle> rects) {
-		objects.insert(objects.end(), rects.begin(), rects.end());
-	}
+void Kyuubi::Scene::draw(SDL_Renderer* renderer) {
+	KYEngine("No implementation of draw(SDL_Renderer*) in scene found!");
+}

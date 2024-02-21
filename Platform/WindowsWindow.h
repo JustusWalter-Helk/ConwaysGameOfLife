@@ -27,6 +27,8 @@ namespace Kyuubi {
 
 		SDL_Window* window = nullptr;
 
+		WindowProps windowProperties;
+
 		bool vsync = false;
 	};
 }

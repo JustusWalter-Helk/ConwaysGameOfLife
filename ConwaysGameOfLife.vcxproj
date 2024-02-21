@@ -131,20 +131,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Core\Renderer.cpp" />
+    <ClCompile Include="Core\Scene.cpp" />
     <ClCompile Include="Core\Window.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Platform\WindowsWindow.cpp" />
-    <ClCompile Include="Core\Scene.cpp" />
+    <ClCompile Include="SimulationScene.cpp" />
     <ClCompile Include="Util\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="Core\Object.h" />
     <ClInclude Include="Core\Renderer.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Platform\Platform.h" />
     <ClInclude Include="Core\Window.h" />
     <ClInclude Include="Platform\WindowsWindow.h" />
     <ClInclude Include="Core\Scene.h" />
+    <ClInclude Include="SimulationScene.h" />
     <ClInclude Include="Util\Color.h" />
     <ClInclude Include="Util\Rectangle.h" />
   </ItemGroup>

@@ -1,8 +1,8 @@
 #include "./Core/Window.h"
 #include "./Core/Renderer.h"
-#include "./Core/Scene.h"
 
-#include "./Util/Rectangle.h"
+#include "Cell.h"
+#include "SimulationScene.h"
 
 #include <iostream>
 
@@ -17,46 +17,68 @@ int main() {
 
 	SDL_Renderer* renderer = Kyuubi::Renderer::Init(Kyuubi::RenderSettings(nativeWindow));
 
-	Kyuubi::Scene scene = Kyuubi::Scene();
+	SimulationScene scene = SimulationScene();
 	
 	int height = window->GetHeight();
 	int width = window->GetWidth();
 
+	KYEngine(width);
+	KYEngine(width);
+
 	int xOffset = 0;
 	int yOffset = 0;
 
+	int margin = 5;
+
 	for (int i = 0; i < 1000; i++) {
-		Kyuubi::Rectangle rect = Rectangle();
-		rect.color = Color(81,183,203, 1);
+		Cell cell = Cell();
+		cell.color = Color(40,122,112, 255);
 
-		rect.SizeX = 40;
-		rect.SizeY = 40;
+		cell.SizeX = 40;
+		cell.SizeY = 40;
 
-		if ((xOffset * rect.SizeX) > width) {
-			yOffset += 1;
-			xOffset = 0;
+		KYEngine((xOffset * (cell.SizeX + margin) + cell.SizeX));
+
+		if ((xOffset * (cell.SizeX) + cell.SizeX) >= width) {
+			yOffset += 1; // Move to the next row
+			xOffset = 0; // Reset xOffset for the new row
 		}
 
-		rect.PosX = xOffset * rect.SizeX;
-		rect.PosY = yOffset * rect.SizeY;
+		cell.PosX = xOffset * (cell.SizeX + margin);
+		cell.PosY = yOffset * (cell.SizeY + margin);
 
-		scene.addObject(rect);
+		scene.addObject(cell);
 
 		KYEngine(xOffset);
 
 		xOffset++;
 	}
 
+	int mouseX, mouseY;
+
 	while (running) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_MOUSEBUTTONDOWN) {
+				SDL_GetMouseState(&mouseX, &mouseY);
+				scene.handleInput(mouseX, mouseY);
+
+				Cell& cell = *Cell::hoveredCell;
+				if (event.button.button == SDL_BUTTON_LEFT) {
+					cell.Enabled = true;
+				}
+				if (event.button.button == SDL_BUTTON_RIGHT) {
+					cell.Enabled = false;
+				}
+			}
+
 			if (event.type == SDL_QUIT) {
 				running = false;
 				SDL_Quit();
 			}
 		}
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
+		SDL_SetRenderDrawColor(renderer, 22, 46, 37, 255);
 		SDL_RenderClear(renderer);
 
 		scene.draw(renderer);

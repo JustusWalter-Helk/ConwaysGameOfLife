@@ -17,11 +17,11 @@ namespace Kyuubi {
 	}
 
 	uint32_t WindowsWindow::GetWidth() const {
-		return 800;
+		return windowProperties.Width;
 	}
 
 	uint32_t WindowsWindow::GetHeight() const {
-		return 800;
+		return windowProperties.Height;
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {

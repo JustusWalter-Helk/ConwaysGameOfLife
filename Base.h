@@ -3,6 +3,7 @@
 #define SDL_MAIN_HANDLED
 
 #include <memory>
+#include "iostream"
 
 #define KYEngine(str) do { std::cout << str << std::endl; } while(0);
 
