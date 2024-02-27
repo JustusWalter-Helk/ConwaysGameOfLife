@@ -1,5 +1,5 @@
 # Conways Game of Life
- 
+ ![Image of a Grid saying Hello with a Hearth](./Preview.png)
 # Description
 Small project to create conways game of life using SDL2.
 <br>
