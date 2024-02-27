@@ -47,6 +47,9 @@ int main() {
 		cell.PosX = xOffset * (cell.SizeX + margin);
 		cell.PosY = yOffset * (cell.SizeY + margin);
 
+		cell.row = xOffset;
+		cell.column = yOffset;
+
 		scene.addObject(cell);
 
 		KYEngine(xOffset);
@@ -59,6 +62,12 @@ int main() {
 	while (running) {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_f) {
+					Conway("Doing Simulation Step");
+					scene.doSimulationStep();
+				}
+			}
 			if (event.type == SDL_MOUSEBUTTONDOWN) {
 				SDL_GetMouseState(&mouseX, &mouseY);
 				scene.handleInput(mouseX, mouseY);

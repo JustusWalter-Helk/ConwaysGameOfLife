@@ -13,8 +13,12 @@ class Cell : public Object{
 public:
 	static Cell* hoveredCell;
 
-	Cell(float posX = 0.0f, float posY = 0.0f, float sizeX = 0.0f, float sizeY = 0.0f, const Color& col = Color())
-		: PosX(posX), PosY(posY), SizeX(sizeX), SizeY(sizeY), color(col) {
+	int row;
+	int column;
+	int aliveNeighbours = 0;
+
+	Cell(float posX = 0.0f, float posY = 0.0f, float sizeX = 0.0f, float sizeY = 0.0f, int row = 0, int column = 0, const Color& col = Color())
+		: PosX(posX), PosY(posY), SizeX(sizeX), SizeY(sizeY), color(col), row(row), column(column) {
 	}
 
 	void checkMouseOver(int mouseX, int mouseY);

@@ -11,6 +11,9 @@ public:
 
 	Cell& getCellAt(int index);
 	void handleInput(int mouseX, int mouseY);
+
+	void doSimulationStep();
+	Cell& getCellAtPosition(int row, int column);
 private:
 	std::vector<Cell> cells = std::vector<Cell>();
 };
