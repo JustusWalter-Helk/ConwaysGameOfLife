@@ -1,10 +1,14 @@
 #include "SimulationScene.h"
 #include "Log.h"
 
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_sdlrenderer2.h"
+
 void SimulationScene::draw(SDL_Renderer* renderer) {
     if (cells.empty()) { return; }
     //Conway("Drawing Simulation");
-    for (Cell cell : cells) {
+    for (const Cell& cell : cells) {
         if (cell.Enabled) {
             SDL_SetRenderDrawColor(renderer, cell.color.r, cell.color.g, cell.color.b, cell.color.a);
         }
@@ -20,6 +24,8 @@ void SimulationScene::draw(SDL_Renderer* renderer) {
 
         SDL_RenderFillRect(renderer, &sdlrect);
     }
+    ImGui::Render();
+    ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
     SDL_RenderPresent(renderer);
 }
 
@@ -81,6 +87,17 @@ void SimulationScene::doSimulationStep() {
     }
 }
 
+void SimulationScene::getCellCount(int& alive, int& dead) {
+    int a = 0;
+    int d = 0;
+    for (Cell& cell : cells) {
+        if (cell.Enabled) a += 1;
+        else d += 1;
+    }
+    alive = a;
+    dead = d;
+}
+
 Cell& SimulationScene::getCellAtPosition(int row, int column) {
     for (Cell& cell : cells) {
         if (cell.row == row && cell.column == column) {
@@ -89,5 +106,6 @@ Cell& SimulationScene::getCellAtPosition(int row, int column) {
     }
 
     static Cell defaultCell;
+    defaultCell.column = -1;
     return defaultCell;
 }

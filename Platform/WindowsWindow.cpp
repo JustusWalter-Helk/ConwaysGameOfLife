@@ -1,10 +1,10 @@
 #include "WindowsWindow.h"
 
-#include "iostream"
-
 namespace Kyuubi {
 	WindowsWindow::WindowsWindow(const WindowProps& props) {
 		KYEngine("Creating WindowsWindow");
+		SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");
+
 		Init(props);
 	}
 

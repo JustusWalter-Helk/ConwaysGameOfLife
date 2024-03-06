@@ -136,20 +136,29 @@
     <ClCompile Include="Core\Scene.cpp" />
     <ClCompile Include="Core\Window.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="ImGui\DearImGui.cpp" />
+    <ClCompile Include="InfoImGui.cpp" />
+    <ClCompile Include="Platform\WindowsInput.cpp" />
     <ClCompile Include="Platform\WindowsWindow.cpp" />
+    <ClCompile Include="SettingsImGui.cpp" />
     <ClCompile Include="SimulationScene.cpp" />
     <ClCompile Include="Util\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="Core\Input.h" />
     <ClInclude Include="Core\Object.h" />
     <ClInclude Include="Core\Renderer.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="ImGui\DearImGui.h" />
+    <ClInclude Include="InfoImGui.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Platform\Platform.h" />
     <ClInclude Include="Core\Window.h" />
     <ClInclude Include="Platform\WindowsWindow.h" />
     <ClInclude Include="Core\Scene.h" />
+    <ClInclude Include="SettingsImGui.h" />
     <ClInclude Include="SimulationScene.h" />
     <ClInclude Include="Util\Color.h" />
     <ClInclude Include="Util\Rectangle.h" />

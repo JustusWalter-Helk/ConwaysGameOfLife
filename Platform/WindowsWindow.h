@@ -1,7 +1,14 @@
 #pragma once
 
 #include "../Core/Window.h"
+#include "Platform.h"
+#include "../Core/Renderer.h"
 
+#include "iostream"
+
+#include "../ImGui/DearImGui.h"
+
+#include "imgui.h"
 #include "SDL2/SDL.h"
 
 namespace Kyuubi {
