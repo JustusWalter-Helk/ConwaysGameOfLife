@@ -1,5 +1,8 @@
 # Conways Game of Life
  ![Image of a Grid saying Hello with a Hearth](./Preview.png)
+
+# Project continues [here](https://github.com/JustusWalter-Helk/AutomataExplorer)! <br>
+ 
 # Description
 Small project to create conways game of life using SDL2.
 <br>
